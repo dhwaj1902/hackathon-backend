@@ -1,0 +1,34 @@
+[
+    {
+        "aadhar": "12345789101",
+        "name": "dhwaj",
+        "phone": "123456790",
+        "email": "dhwajdhwaj.com",
+        "city": "new delhi",
+        "gender": "male"
+    },
+    {
+        "aadhar": "12345789102",
+        "name": "dhwaj1",
+        "phone": "123456790",
+        "email": "dhwajdhwaj.com",
+        "city": "new delhi",
+        "gender": "male"
+    },
+    {
+        "aadhar": "12345789103",
+        "name": "dhwaj1",
+        "phone": "123456790",
+        "email": "dhwajdhwaj.com",
+        "city": "new delhi",
+        "gender": "male"
+    },
+    {
+        "aadhar": "12345789104",
+        "name": "dhwaj2",
+        "phone": "123456790",
+        "email": "dhwajdhwaj.com",
+        "city": "new delhi",
+        "gender": "male"
+    }
+]
