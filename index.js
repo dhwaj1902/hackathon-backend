@@ -5,6 +5,7 @@ var async = require("async");
 var fs = require("fs");
 var pg = require("pg");
 var jwt = require("jsonwebtoken");
+const cors = require("cors");
 
 // Connect to the "bank" database.
 var config = {
@@ -14,9 +15,28 @@ var config = {
   port: 26257,
 };
 
+//Middle wares
+// http://localhost:19002
+var allowedOrigins = ["*"];
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      // allow requests with no origin
+      // (like mobile apps or curl requests)
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.indexOf(origin) === -1) {
+        var msg =
+          "The CORS policy for this site does not " +
+          "allow access from the specified Origin.";
+        return callback(new Error(msg), false);
+      }
+      return callback(null, true);
+    },
+  })
+);
+
 // Create a pool.
 var pool = new pg.Pool(config);
-
 pool.connect(function (err, client, done) {
   // Close communication with the database and exit.
   var finish = function () {
