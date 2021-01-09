@@ -30,5 +30,13 @@
         "email": "dhwajdhwaj.com",
         "city": "new delhi",
         "gender": "male"
+    },
+    {
+        "aadhar": "12345789105",
+        "name": "dhwaj2",
+        "phone": "123456790",
+        "email": "dhwajdhwaj.com",
+        "city": "new delhi",
+        "gender": "male"
     }
 ]

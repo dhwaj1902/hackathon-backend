@@ -61,9 +61,17 @@ app.get("/register", (req, res) => {
     if (err) {
       console.log(err);
     } else if (result.rows.length > 0) {
-      return res
-        .status(422)
-        .json({ error: "User Already exists with that aadhar" });
+      const token = jwt.sign({ aadhar: aadhar }, process.env.SECRET);
+      pool.query(
+        `UPDATE users3 SET token = '${token}' WHERE aadhar = ${aadhar} `,
+        (err, result) => {
+          if (err) {
+            res.json({ error: "Error" });
+          } else {
+            return res.status(200).json({ success: true });
+          }
+        }
+      );
     } else {
       var dd = data.find((item) => item.aadhar == aadhar);
       console.log(dd);
@@ -94,6 +102,20 @@ app.get("/logout", (req, res) => {
         res.json({ error: "Error" });
       } else {
         res.json({ status: result });
+      }
+    }
+  );
+});
+
+app.get("/particluaruser", (req, res) => {
+  console.log(req.query.aadhar);
+  pool.query(
+    `SELECT * FROM users3 WHERE aadhar = ${req.query.aadhar} `,
+    (err, result) => {
+      if (err) {
+        res.json({ error: "Error" });
+      } else {
+        res.json({ result: result.rows[0] });
       }
     }
   );
